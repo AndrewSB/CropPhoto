@@ -2,7 +2,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    let imagePicker: UIImagePickerController = {
+    lazy var imagePicker: UIImagePickerController = {
         $0.delegate = self
         
         return $0
@@ -16,11 +16,11 @@ extension ViewController {
         let cameraOrLibraryAlert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let cameraAction = UIAlertAction(title: "Camera", style: .default) { _ in
-            self.imagePicker.sourceType = .photoLibrary
+            self.imagePicker.sourceType = .camera
             self.present(self.imagePicker, animated: true, completion: .none)
         }
         let libraryAction = UIAlertAction(title: "Library", style: .default) { _ in
-            self.imagePicker.sourceType = .camera
+            self.imagePicker.sourceType = .photoLibrary
             self.present(self.imagePicker, animated: true, completion: .none)
         }
         [cameraAction, libraryAction].forEach(cameraOrLibraryAlert.addAction)
@@ -33,12 +33,15 @@ extension ViewController {
 extension ViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        
-        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            self.performSegue(withIdentifier: "toCrop", sender: pickedImage)
-        }
-        
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: {
+            if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+                self.performSegue(withIdentifier: "toCrop", sender: pickedImage)
+            } else {
+                let ohNoAlert = UIAlertController(title: "Oh no!", message: "We couldn't retrieve your selected photo 🤔", preferredStyle: .alert)
+                ohNoAlert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: .none))
+                self.present(ohNoAlert, animated: true, completion: .none)
+            }
+        })
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {

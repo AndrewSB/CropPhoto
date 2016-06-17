@@ -1,11 +1,3 @@
-//
-//  CropPhotoViewController.swift
-//  CropPhoto
-//
-//  Created by Andrew Breckenridge on 6/17/16.
-//  Copyright © 2016 Andrew Breckenridge. All rights reserved.
-//
-
 import UIKit
 
 class CropPhotoViewController: UIViewController {

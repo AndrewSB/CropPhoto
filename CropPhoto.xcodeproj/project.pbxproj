@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46151D201D1481D90080B024 /* CropPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46151D1F1D1481D90080B024 /* CropPhotoView.swift */; };
 		46BE85D01D14762C005486D4 /* CropPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BE85CF1D14762C005486D4 /* CropPhoto.swift */; };
 		46BE85D81D147668005486D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BE85D71D147668005486D4 /* AppDelegate.swift */; };
 		46BE85DA1D147668005486D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BE85D91D147668005486D4 /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		46151D1F1D1481D90080B024 /* CropPhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropPhotoView.swift; sourceTree = "<group>"; };
 		46BE85C41D147615005486D4 /* CropPhoto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CropPhoto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46BE85C91D147615005486D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46BE85CF1D14762C005486D4 /* CropPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropPhoto.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 			children = (
 				46BE85C91D147615005486D4 /* Info.plist */,
 				46BE85CF1D14762C005486D4 /* CropPhoto.swift */,
+				46151D1F1D1481D90080B024 /* CropPhotoView.swift */,
 			);
 			path = CropPhoto;
 			sourceTree = "<group>";
@@ -154,6 +157,8 @@
 					};
 					46BE85D41D147668005486D4 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = A29347X2JZ;
+						DevelopmentTeamName = "Andrew Breckenridge";
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -203,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46BE85D01D14762C005486D4 /* CropPhoto.swift in Sources */,
+				46151D201D1481D90080B024 /* CropPhotoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +283,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -322,7 +328,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -413,6 +419,7 @@
 				46BE85CE1D147615005486D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		46BE85E41D147668005486D4 /* Build configuration list for PBXNativeTarget "Demo" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +428,7 @@
 				46BE85E61D147668005486D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
