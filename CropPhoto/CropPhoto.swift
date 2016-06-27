@@ -7,7 +7,7 @@ public class CropPhoto {
 public extension CropPhoto {
     
     public struct Params {
-        public let input: UIImage
+        public let image: UIImage
         public let cropRect: CGRect
     }
     
@@ -15,8 +15,8 @@ public extension CropPhoto {
 
 public extension CropPhoto.Params {
     
-    public init(_ input: UIImage, cropRect: CGRect) {
-        self.input = input
+    public init(_ image: UIImage, cropRect: CGRect) {
+        self.image = image
         self.cropRect = cropRect
     }
     

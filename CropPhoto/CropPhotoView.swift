@@ -13,25 +13,50 @@ public extension CropPhoto {
             
             return $0
         }(UIImageView())
-        var imageViewTransform: CGAffineTransform!
+
+        override init(frame: CGRect) {
+            super.init(frame: frame)
+            
+            imageView.leftAnchor.constraintEqualToAnchor(self.leftAnchor)
+            imageView.rightAnchor.constraintEqualToAnchor(self.rightAnchor)
+            imageView.topAnchor.constraintEqualToAnchor(self.topAnchor)
+            imageView.bottomAnchor.constraintEqualToAnchor(self.bottomAnchor)
+        }
+        
+        required public init?(coder aDecoder: NSCoder) {
+            // you're not going to be able to
+            fatalError("init(coder:) has not been implemented")
+        }
+        
+        convenience public init(params: CropPhoto.Params, frame: CGRect) {
+            self.init(frame: frame)
+            
+            self.params = params
+        }
     }
     
 }
 
-public extension CropPhoto.View {
-    convenience init(params: CropPhoto.Params, frame: CGRect) {
-        self.init(frame: frame)
-        
-        self.params = params
-    }
+extension CropPhoto.View {
     
     func bind(params: CropPhoto.Params) {
+        bind(params.image)
+        bind(params.cropRect)
+    }
+    
+    private func bind(image: UIImage) {
         imageView.leftAnchor.constraintEqualToAnchor(self.leftAnchor)
         imageView.rightAnchor.constraintEqualToAnchor(self.rightAnchor)
         imageView.topAnchor.constraintEqualToAnchor(self.topAnchor)
         imageView.bottomAnchor.constraintEqualToAnchor(self.bottomAnchor)
         
-        imageView.image = params.input
-        
+        imageView.image = params.image
     }
+    
+    private func bind(cropRect: CGRect) {
+        removeMask()
+        
+        addSubview(maskView(withTransparentRect: cropRect))
+    }
+    
 }
