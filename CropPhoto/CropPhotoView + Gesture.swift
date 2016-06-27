@@ -26,6 +26,38 @@ extension CropPhoto.View {
 
 extension CropPhoto.View {
     
+    func handleTouches(touches: Set<UITouch>?) {
+        guard let touches = touches where touches.count > 2 else {
+            self.touchCenter = .zero
+            return
+        }
+        
+        touches.forEach { touch in
+            let touchLocation = touch.locationInView(self.imageView)
+            self.touchCenter = CGPoint(x: touchCenter.x + touchLocation.x, y: touchCenter.y + touchLocation.y)
+        }
+    }
+    
+    override public func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.handleTouches(event?.allTouches())
+    }
+    
+    override public func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.handleTouches(event?.allTouches())
+    }
+    
+    override public func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?)  {
+        self.handleTouches(event?.allTouches())
+    }
+
+    override public func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
+        self.handleTouches(event?.allTouches())
+    }
+
+}
+
+extension CropPhoto.View {
+    
     func addGestureRecognizers() {
         ImageOperationGestureRecognizers.all.forEach { $0.delegate = self }
         ImageOperationGestureRecognizers.all.forEach(addGestureRecognizer)
@@ -39,10 +71,10 @@ extension CropPhoto.View {
         defer { resetPanCenter() }
         
         let translation = gesture.translationInView(self)
-        let translatedCenter = CGPoint(x: self.imageView.center.x + translation.x, y: self.imageView.center.y + translation.y)
+        let panTransformation = CGAffineTransformTranslate(imageView.transform, translation.x, translation.y)
         
-        if maskContainsAnyOfTheImage(translatedCenter) {
-            self.imageView.center = translatedCenter
+        if maskContainsAnyOfTransformedImage(panTransformation) {
+            self.imageView.transform = panTransformation
         }
     }
     
@@ -65,6 +97,7 @@ extension CropPhoto.View {
             self.imageView.transform = rotationTransform
         }
     }
+    
 }
 
 private extension CropPhoto.View {

@@ -21,6 +21,9 @@ public extension CropPhoto {
             }
         }
         
+        // a sink for touches
+        var touchCenter: CGPoint!
+        
         override init(frame: CGRect) {
             super.init(frame: frame)
             
