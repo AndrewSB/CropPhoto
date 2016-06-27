@@ -45,7 +45,7 @@ public extension CropPhoto {
 public extension CropPhoto.View {
     
     public func croppedImage() -> UIImage {
-        return self.croppedImage(params.cropRect ?? defaultCropRect)
+        return self.croppedTransformedImage(self.imageView, cropRect: params.cropRect ?? defaultCropRect)
     }
     
 }

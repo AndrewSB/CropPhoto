@@ -20,27 +20,94 @@ extension CropPhoto.View {
         assert(imageView.transform.xScale == imageView.transform.yScale)
         return imageView.transform.xScale
     }
-
-    func croppedImage(withFrame: CGRect) -> UIImage {
+    
+    /// Assumes that all the transforms have been made to the UIImageView passed in
+    func croppedTransformedImage(sourceImageView: UIImageView, cropRect: CGRect) -> UIImage {
+        
+        return croppedTransformedImage(withTransform: sourceImageView.transform,
+                                       sourceImage: sourceImageView.image!,
+                                       sourceSize: sourceImageView.image!.size,
+                                       sourceOrientation: sourceImageView.image!.imageOrientation,
+                                       outputWidth: sourceImageView.image!.size.width,
+                                       cropRect: cropRect,
+                                       imageViewSize: sourceImageView.bounds.size)
+        
+    }
+    
+    func croppedTransformedImage(withTransform transfrom: CGAffineTransform,
+                                               sourceImage: UIImage,
+                                               sourceSize: CGSize,
+                                               sourceOrientation: UIImageOrientation,
+                                               outputWidth: CGFloat,
+                                               cropRect: CGRect,
+                                               imageViewSize: CGSize) -> UIImage {
+        
+        let sourceRef: CGImageRef = sourceImage.CGImage!
+        
+        let (orientationTransform, orientedSize) = transformAndSizeForOrientation(sourceSize, orientation: sourceOrientation)
+        
+        let aspectRatio = cropRect.size.height / cropRect.size.width
+        let outputSize = CGSize(width: outputWidth, height: outputWidth * aspectRatio)
+        
         let ctx = CGBitmapContextCreate(nil,
-                                        Int(imageView.frame.size.width),
-                                        Int(imageView.frame.size.height),
-                                        CGImageGetBitsPerComponent(imageView.image!.CGImage),
+                                        Int(outputSize.width),
+                                        Int(outputSize.height),
+                                        CGImageGetBitsPerComponent(sourceRef),
                                         0,
-                                        CGImageGetColorSpace(imageView.image!.CGImage),
-                                        CGImageGetBitmapInfo(imageView.image!.CGImage).rawValue
-        )
+                                        CGImageGetColorSpace(sourceRef),
+                                        CGImageGetBitmapInfo(sourceRef).rawValue)
         
-        CGContextTranslateCTM(ctx, imageView.frame.size.width / 2, imageView.frame.size.height / 2)
-        CGContextConcatCTM(ctx, imageView.transform)
+        CGContextSetFillColorWithColor(ctx, UIColor.clearColor().CGColor)
+        CGContextFillRect(ctx, CGRect(origin: .zero, size: outputSize))
         
-        CGContextDrawImage(ctx, CGRect(x: -(imageView.frame.size.width / 2), y: -(imageView.frame.size.height / 2), width: imageView.frame.size.width, height: imageView.frame.size.height), imageView.image!.CGImage)
+        var uiCords = CGAffineTransformMakeScale(outputSize.width / outputSize.height, outputSize.height / outputSize.width)
+        uiCords = CGAffineTransformTranslate(uiCords, cropRect.size.width / 2, cropRect.size.height / 2)
+        uiCords = CGAffineTransformScale(uiCords, 1, -1)
+        CGContextConcatCTM(ctx, uiCords)
+        
+        CGContextConcatCTM(ctx, transfrom)
+        CGContextScaleCTM(ctx, -1, 1)
+        CGContextConcatCTM(ctx, orientationTransform)
+        
+        let orientedSizeRect = CGRect(x: -orientedSize.width / 2, y: -orientedSize.height / 2, width: orientedSize.width, height: orientedSize.height)
+        CGContextDrawImage(ctx, orientedSizeRect, sourceRef)
         
         let resultRef = CGBitmapContextCreateImage(ctx)!
         
         return UIImage(CGImage: resultRef)
     }
     
+    private func transformAndSizeForOrientation(size: CGSize, orientation: UIImageOrientation) -> (CGAffineTransform, CGSize) {
+        
+        var orientationTransform = CGAffineTransformIdentity
+        var shouldRotate = false
+    
+        // rotate the image
+        switch orientation {
+        case .Up, .UpMirrored:
+            break
+        case .Down, .DownMirrored:
+            orientationTransform = CGAffineTransformMakeRotation(CGFloat(M_PI))
+        case .Left, .LeftMirrored:
+            orientationTransform = CGAffineTransformMakeRotation(CGFloat(M_PI_2))
+            shouldRotate = true
+        case .Right, .RightMirrored:
+            orientationTransform = CGAffineTransformMakeRotation(-CGFloat(M_PI_2))
+            shouldRotate = true
+        }
+    
+        // fix mirroring
+        switch orientation {
+        case .UpMirrored, .DownMirrored, .LeftMirrored, .RightMirrored:
+            orientationTransform = CGAffineTransformScale(transform, -1, 1)
+        default:
+            break
+        }
+        
+        let sizeForOrientation = shouldRotate ? CGSize(width: size.height, height: size.width) : size
+        
+        return (orientationTransform, sizeForOrientation)
+    }
 }
 
 private extension CGAffineTransform {
