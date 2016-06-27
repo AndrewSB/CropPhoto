@@ -51,12 +51,25 @@
                     <view key="view" contentMode="scaleToFill" id="aQa-as-iLE">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wCJ-lh-rnq">
+                                <rect key="frame" x="284" y="550" width="32" height="30"/>
+                                <state key="normal" title="save"/>
+                                <connections>
+                                    <action selector="didHitSave" destination="zhf-03-aYQ" eventType="touchUpInside" id="gC8-Kj-HcC"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SE7-Dq-EtY" firstAttribute="top" secondItem="wCJ-lh-rnq" secondAttribute="bottom" constant="20" id="GvB-cb-TTZ"/>
+                            <constraint firstItem="wCJ-lh-rnq" firstAttribute="centerX" secondItem="aQa-as-iLE" secondAttribute="centerX" id="n5g-yu-TMO"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dMD-Q5-Rjy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="660" y="170"/>
+            <point key="canvasLocation" x="666" y="137"/>
         </scene>
     </scenes>
 </document>

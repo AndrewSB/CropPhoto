@@ -26,3 +26,19 @@ extension CropPhotoViewController {
     }
     
 }
+
+extension CropPhotoViewController {
+    
+    
+    @IBAction func didHitSave() {
+        let croppedImage = cropPhotoView!.croppedImage()
+        
+        let displayVC = UIViewController()
+        let imageView = UIImageView(frame: displayVC.view.frame)
+        imageView.contentMode = .ScaleAspectFit
+        imageView.image = croppedImage
+        
+        presentViewController(displayVC, animated: true, completion: .None)
+    }
+    
+}

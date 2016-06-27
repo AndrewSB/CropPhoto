@@ -13,11 +13,6 @@ public extension CropPhoto {
             
             return $0
         }(UIImageView())
-        var imageViewTransform: CGAffineTransform? = nil {
-            didSet {
-                self.imageView.transform = imageViewTransform!
-            }
-        }
 
         var maskRectView: UIView? = nil {
             didSet {
@@ -34,7 +29,6 @@ public extension CropPhoto {
         }
         
         required public init?(coder aDecoder: NSCoder) {
-            // you're not going to be able to
             fatalError("init(coder:) has not been implemented")
         }
         
@@ -45,16 +39,25 @@ public extension CropPhoto {
             bind(params)
         }
         
-        public override func didMoveToSuperview() {
-            super.didMoveToSuperview()
-            
-            self.imageView.frame = self.frame
-        }
+    }
+}
+
+public extension CropPhoto.View {
+    
+    public func croppedImage() -> UIImage {
+        return self.croppedImage(params.cropRect ?? defaultCropRect)
     }
     
 }
 
 extension CropPhoto.View {
+    
+    public override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        
+        self.imageView.frame = self.frame
+    }
+    
     
     func bind(params: CropPhoto.Params) {
         imageView.image = params.image
