@@ -16,11 +16,8 @@ public extension CropPhoto {
 
         override init(frame: CGRect) {
             super.init(frame: frame)
-            
-            imageView.leftAnchor.constraintEqualToAnchor(self.leftAnchor)
-            imageView.rightAnchor.constraintEqualToAnchor(self.rightAnchor)
-            imageView.topAnchor.constraintEqualToAnchor(self.topAnchor)
-            imageView.bottomAnchor.constraintEqualToAnchor(self.bottomAnchor)
+
+            addSubview(imageView)
         }
         
         required public init?(coder aDecoder: NSCoder) {
@@ -32,6 +29,13 @@ public extension CropPhoto {
             self.init(frame: frame)
             
             self.params = params
+            bind(params)
+        }
+        
+        public override func layoutSubviews() {
+            super.layoutSubviews()
+            
+            imageView.frame = self.frame
         }
     }
     
