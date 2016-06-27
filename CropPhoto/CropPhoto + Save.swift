@@ -8,6 +8,7 @@
 
 import UIKit
 
+// better implement this https://github.com/heitorfr/ios-image-editor/blob/master/ImageEditor/HFImageEditorViewController.m
 extension CropPhoto.View {
     
     typealias Radians = CGFloat
@@ -21,26 +22,23 @@ extension CropPhoto.View {
     }
 
     func croppedImage(withFrame: CGRect) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(imageView.frame.size, true, imageViewScaleFactor)
+        let ctx = CGBitmapContextCreate(nil,
+                                        Int(imageView.frame.size.width),
+                                        Int(imageView.frame.size.height),
+                                        CGImageGetBitsPerComponent(imageView.image!.CGImage),
+                                        0,
+                                        CGImageGetColorSpace(imageView.image!.CGImage),
+                                        CGImageGetBitmapInfo(imageView.image!.CGImage).rawValue
+        )
         
-        let ctx = UIGraphicsGetCurrentContext()!
+        CGContextTranslateCTM(ctx, imageView.frame.size.width / 2, imageView.frame.size.height / 2)
+        CGContextConcatCTM(ctx, imageView.transform)
         
-        let croppingImageView = UIImageView(image: imageView.image)
+        CGContextDrawImage(ctx, CGRect(x: -(imageView.frame.size.width / 2), y: -(imageView.frame.size.height / 2), width: imageView.frame.size.width, height: imageView.frame.size.height), imageView.image!.CGImage)
         
-        croppingImageView.transform = CGAffineTransformRotate(CGAffineTransformIdentity, imageViewRotation)
-        let rotatedRect = CGRectApplyAffineTransform(croppingImageView.bounds, croppingImageView.transform)
+        let resultRef = CGBitmapContextCreateImage(ctx)!
         
-        let containerView = UIView(frame: CGRect(origin: .zero, size: rotatedRect.size))
-        containerView.addSubview(croppingImageView)
-        croppingImageView.center = containerView.center
-        
-        CGContextTranslateCTM(ctx, -imageView.frame.origin.x, -imageView.frame.origin.y)
-        containerView.layer.renderInContext(ctx)
-        
-        let croppedImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return UIImage(CGImage: croppedImage.CGImage!, scale: UIScreen.mainScreen().scale, orientation: .Up)
+        return UIImage(CGImage: resultRef)
     }
     
 }
