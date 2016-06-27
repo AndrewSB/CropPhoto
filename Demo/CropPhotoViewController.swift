@@ -3,12 +3,16 @@ import CropPhoto
 
 class CropPhotoViewController: UIViewController {
     
-    @IBOutlet weak var cropPhotoView: CropPhotoView! {
+    var cropPhotoView: CropPhoto.View!
+    
+    var input: UIImage! {
         didSet {
-            cropPhotoView.params = CropPhoto.Params(self.input!, cropRect: .zero)
+            let params = CropPhoto.Params(input!, cropRect: .zero)
+            cropPhotoView = CropPhoto.View(params: params, frame: self.view.frame)
+            cropPhotoView.backgroundColor = .redColor()
+            self.view.addSubview(cropPhotoView)
         }
     }
-    var input: UIImage!
 
 }
 
@@ -16,6 +20,7 @@ extension CropPhotoViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
     }
     

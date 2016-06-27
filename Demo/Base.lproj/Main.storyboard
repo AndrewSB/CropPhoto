@@ -33,9 +33,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="OhS-Kx-1Eo" kind="show" identifier="toCrop" id="wJD-CC-Lci">
-                            <nil key="action"/>
-                        </segue>
+                        <segue destination="zhf-03-aYQ" kind="show" identifier="toCrop" id="S7m-7w-hGI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m0d-kY-nxN" sceneMemberID="firstResponder"/>
@@ -43,31 +41,22 @@
             <point key="canvasLocation" x="-69" y="137"/>
         </scene>
         <!--Crop Photo View Controller-->
-        <scene sceneID="mlY-Ne-nrs">
+        <scene sceneID="eIL-jt-prc">
             <objects>
-                <viewController id="OhS-Kx-1Eo" customClass="CropPhotoViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="zhf-03-aYQ" customClass="CropPhotoViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="7Mb-ns-ifr"/>
-                        <viewControllerLayoutGuide type="bottom" id="T6c-KS-96c"/>
+                        <viewControllerLayoutGuide type="top" id="UpN-bc-nP8"/>
+                        <viewControllerLayoutGuide type="bottom" id="SE7-Dq-EtY"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ROi-uG-QO6">
+                    <view key="view" contentMode="scaleToFill" id="aQa-as-iLE" customClass="CropPhotoView" customModule="Demo" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lFV-pY-gI6" customClass="CropPhotoView" customModule="CropPhoto">
-                                <rect key="frame" x="68" y="231" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <connections>
-                        <outlet property="cropPhotoView" destination="lFV-pY-gI6" id="6iH-5z-iiB"/>
-                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ueb-kq-MLB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dMD-Q5-Rjy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="682" y="137"/>
+            <point key="canvasLocation" x="660" y="170"/>
         </scene>
     </scenes>
 </document>

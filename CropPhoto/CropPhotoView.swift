@@ -1,7 +1,5 @@
 import UIKit
 
-public typealias CropPhotoView = CropPhoto.View
-
 public extension CropPhoto {
     
     public class View: UIView {
