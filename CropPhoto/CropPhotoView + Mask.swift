@@ -13,7 +13,17 @@ extension CropPhoto.View {
 
 extension CropPhoto.View {
     
-    func maskView(withTransparentRect rect: CGRect,
+    private var defaultCropRect: CGRect {
+        let fractionalWidth = self.frame.size.width * 0.85
+        let fractionalHeight = fractionalWidth * 0.65
+        
+        return CGRect(
+            origin: CGPoint(x: (self.frame.size.width - fractionalWidth) / 2, y: self.frame.size.height * 0.18),
+            size: CGSize(width: fractionalWidth, height: fractionalHeight)
+        )
+    }
+    
+    func maskView(withTransparentRect rect: CGRect? = nil,
                                       backgroundColor: UIColor = UIColor(white:  0.173, alpha: 0.94),
                                       cornerRadius: CGFloat = 10)-> UIView {
         
@@ -22,7 +32,7 @@ extension CropPhoto.View {
         coloredLargeView.userInteractionEnabled = false
         
         let coloredPath = UIBezierPath(rect: CGRect(origin: .zero, size: CGSize(width: self.frame.width, height: self.frame.height + 40)))
-        let transparentPath = UIBezierPath(roundedRect: rect, cornerRadius: cornerRadius)
+        let transparentPath = UIBezierPath(roundedRect: rect ?? defaultCropRect, cornerRadius: cornerRadius)
 
         coloredPath.appendPath(transparentPath)
         coloredPath.usesEvenOddFillRule = true
@@ -32,6 +42,7 @@ extension CropPhoto.View {
         fillLayer.fillRule = kCAFillRuleEvenOdd
         fillLayer.fillColor = backgroundColor.CGColor
         
+        coloredLargeView.layer.addSublayer(fillLayer)
         return coloredLargeView
     }
     

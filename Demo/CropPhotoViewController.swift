@@ -14,8 +14,8 @@ extension CropPhotoViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        assert(input != nil, "You didn't set the input fam, fam")
-        let params = CropPhoto.Params(input!, cropRect: .zero)
+        assert(input != nil, "You didn't set the input, fam")
+        let params = CropPhoto.Params(input!, cropRect: nil)
         
         cropPhotoView = CropPhoto.View(params: params, frame: self.view.frame)
         view.addSubview(cropPhotoView!)

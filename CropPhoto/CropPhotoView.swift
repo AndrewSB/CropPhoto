@@ -14,6 +14,14 @@ public extension CropPhoto {
             return $0
         }(UIImageView())
 
+        var maskRectView: UIView? = nil {
+            didSet {
+//                removeMask()
+                print(maskRectView!.frame)
+                insertSubview(maskRectView!, aboveSubview: imageView)
+            }
+        }
+        
         override init(frame: CGRect) {
             super.init(frame: frame)
 
@@ -36,6 +44,8 @@ public extension CropPhoto {
             super.layoutSubviews()
             
             imageView.frame = self.frame
+            sendSubviewToBack(imageView)
+            print(maskRectView?.frame)
         }
     }
     
@@ -44,23 +54,8 @@ public extension CropPhoto {
 extension CropPhoto.View {
     
     func bind(params: CropPhoto.Params) {
-        bind(params.image)
-        bind(params.cropRect)
-    }
-    
-    private func bind(image: UIImage) {
-        imageView.leftAnchor.constraintEqualToAnchor(self.leftAnchor)
-        imageView.rightAnchor.constraintEqualToAnchor(self.rightAnchor)
-        imageView.topAnchor.constraintEqualToAnchor(self.topAnchor)
-        imageView.bottomAnchor.constraintEqualToAnchor(self.bottomAnchor)
-        
         imageView.image = params.image
-    }
-    
-    private func bind(cropRect: CGRect) {
-        removeMask()
-        
-        addSubview(maskView(withTransparentRect: cropRect))
+        maskRectView = maskView(withTransparentRect: params.cropRect)
     }
     
 }
