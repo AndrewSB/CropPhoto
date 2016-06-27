@@ -1,70 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11129.15" systemVersion="16A201w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A201w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1AF-gc-48N">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11103.10"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <scene sceneID="0f3-p5-8F8">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1AF-gc-48N" customClass="ViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="yr7-Zs-c1C"/>
+                        <viewControllerLayoutGuide type="bottom" id="K8n-2x-m0o"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                    <view key="view" contentMode="scaleToFill" id="ERD-mr-jtC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sYi-fu-CHH">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2wD-RT-NlS">
+                                <rect key="frame" x="263" y="285" width="74" height="30"/>
                                 <state key="normal" title="Pick Photo"/>
                                 <connections>
-                                    <action selector="pickPhotoButtonWasHit" destination="BYZ-38-t0r" eventType="touchUpInside" id="XmS-yc-mga"/>
+                                    <action selector="pickPhotoButtonWasHit" destination="1AF-gc-48N" eventType="touchUpInside" id="FHD-RV-Ol5"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="sYi-fu-CHH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerXWithinMargins" id="Vox-m7-oQk"/>
-                            <constraint firstItem="sYi-fu-CHH" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="by1-UB-5o5"/>
+                            <constraint firstItem="2wD-RT-NlS" firstAttribute="centerY" secondItem="ERD-mr-jtC" secondAttribute="centerY" id="Fnc-Cp-oCZ"/>
+                            <constraint firstItem="2wD-RT-NlS" firstAttribute="centerX" secondItem="ERD-mr-jtC" secondAttribute="centerXWithinMargins" id="pes-XM-gJy"/>
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="hpq-Iu-hWA" kind="show" identifier="toCrop" id="APP-zP-BbV"/>
+                        <segue destination="OhS-Kx-1Eo" kind="show" identifier="toCrop" id="wJD-CC-Lci">
+                            <nil key="action"/>
+                        </segue>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m0d-kY-nxN" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-69" y="137"/>
         </scene>
         <!--Crop Photo View Controller-->
-        <scene sceneID="L2M-BA-SkZ">
+        <scene sceneID="mlY-Ne-nrs">
             <objects>
-                <viewController id="hpq-Iu-hWA" customClass="CropPhotoViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="OhS-Kx-1Eo" customClass="CropPhotoViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="RU5-4Y-T4x"/>
-                        <viewControllerLayoutGuide type="bottom" id="lE1-UV-jgH"/>
+                        <viewControllerLayoutGuide type="top" id="7Mb-ns-ifr"/>
+                        <viewControllerLayoutGuide type="bottom" id="T6c-KS-96c"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="XH0-ZK-rWD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                    <view key="view" contentMode="scaleToFill" id="ROi-uG-QO6">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oqw-eM-vKB" customClass="CropPhotoView" customModule="CropPhoto">
-                                <frame key="frameInset" minX="68" minY="231" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lFV-pY-gI6" customClass="CropPhotoView" customModule="CropPhoto">
+                                <rect key="frame" x="68" y="231" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="cropPhotoView" destination="oqw-eM-vKB" id="yxh-Mk-eQd"/>
+                        <outlet property="cropPhotoView" destination="lFV-pY-gI6" id="6iH-5z-iiB"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UvN-Gd-B2t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ueb-kq-MLB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="682" y="137"/>
         </scene>

@@ -11,11 +11,36 @@
 		46BE85D01D14762C005486D4 /* CropPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BE85CF1D14762C005486D4 /* CropPhoto.swift */; };
 		46BE85D81D147668005486D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BE85D71D147668005486D4 /* AppDelegate.swift */; };
 		46BE85DA1D147668005486D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BE85D91D147668005486D4 /* ViewController.swift */; };
-		46BE85DD1D147668005486D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46BE85DB1D147668005486D4 /* Main.storyboard */; };
 		46BE85DF1D147668005486D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46BE85DE1D147668005486D4 /* Assets.xcassets */; };
-		46BE85E21D147668005486D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46BE85E01D147668005486D4 /* LaunchScreen.storyboard */; };
 		46BE85E81D147941005486D4 /* CropPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BE85E71D147941005486D4 /* CropPhotoViewController.swift */; };
+		46C6212F1D20EE0900D2254D /* CropPhoto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46BE85C41D147615005486D4 /* CropPhoto.framework */; };
+		46C621301D20EE0900D2254D /* CropPhoto.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 46BE85C41D147615005486D4 /* CropPhoto.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		46C621381D20EEDE00D2254D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46C621361D20EEDE00D2254D /* Main.storyboard */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		46C621311D20EE0900D2254D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46BE85BB1D147615005486D4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 46BE85C31D147615005486D4;
+			remoteInfo = CropPhoto;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		46C621331D20EE0900D2254D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				46C621301D20EE0900D2254D /* CropPhoto.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		46151D1F1D1481D90080B024 /* CropPhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropPhotoView.swift; sourceTree = "<group>"; };
@@ -25,11 +50,10 @@
 		46BE85D51D147668005486D4 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46BE85D71D147668005486D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46BE85D91D147668005486D4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		46BE85DC1D147668005486D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		46BE85DE1D147668005486D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		46BE85E11D147668005486D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		46BE85E31D147668005486D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46BE85E71D147941005486D4 /* CropPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropPhotoViewController.swift; sourceTree = "<group>"; };
+		46C621371D20EEDE00D2254D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46C6212F1D20EE0900D2254D /* CropPhoto.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,9 +109,8 @@
 				46BE85D71D147668005486D4 /* AppDelegate.swift */,
 				46BE85D91D147668005486D4 /* ViewController.swift */,
 				46BE85E71D147941005486D4 /* CropPhotoViewController.swift */,
-				46BE85DB1D147668005486D4 /* Main.storyboard */,
+				46C621361D20EEDE00D2254D /* Main.storyboard */,
 				46BE85DE1D147668005486D4 /* Assets.xcassets */,
-				46BE85E01D147668005486D4 /* LaunchScreen.storyboard */,
 				46BE85E31D147668005486D4 /* Info.plist */,
 			);
 			path = Demo;
@@ -130,10 +154,12 @@
 				46BE85D11D147668005486D4 /* Sources */,
 				46BE85D21D147668005486D4 /* Frameworks */,
 				46BE85D31D147668005486D4 /* Resources */,
+				46C621331D20EE0900D2254D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				46C621321D20EE0900D2254D /* PBXTargetDependency */,
 			);
 			name = Demo;
 			productName = Demo;
@@ -152,6 +178,7 @@
 				TargetAttributes = {
 					46BE85C31D147615005486D4 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = A29347X2JZ;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
@@ -194,9 +221,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46BE85E21D147668005486D4 /* LaunchScreen.storyboard in Resources */,
+				46C621381D20EEDE00D2254D /* Main.storyboard in Resources */,
 				46BE85DF1D147668005486D4 /* Assets.xcassets in Resources */,
-				46BE85DD1D147668005486D4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,21 +250,21 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		46C621321D20EE0900D2254D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 46BE85C31D147615005486D4 /* CropPhoto */;
+			targetProxy = 46C621311D20EE0900D2254D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
-		46BE85DB1D147668005486D4 /* Main.storyboard */ = {
+		46C621361D20EEDE00D2254D /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				46BE85DC1D147668005486D4 /* Base */,
+				46C621371D20EEDE00D2254D /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		46BE85E01D147668005486D4 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				46BE85E11D147668005486D4 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -380,6 +406,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = asb.Demo;
@@ -392,6 +419,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = asb.Demo;
