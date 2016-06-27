@@ -66,10 +66,45 @@
                             <constraint firstItem="wCJ-lh-rnq" firstAttribute="centerX" secondItem="aQa-as-iLE" secondAttribute="centerX" id="n5g-yu-TMO"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="Aa8-v7-wDE" kind="show" identifier="toDisplay" id="yKv-GO-IgR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dMD-Q5-Rjy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="666" y="137"/>
+        </scene>
+        <!--Result View Controller-->
+        <scene sceneID="ZmE-pL-JJP">
+            <objects>
+                <viewController id="Aa8-v7-wDE" customClass="ResultViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="THA-kt-deT"/>
+                        <viewControllerLayoutGuide type="bottom" id="YrT-hX-Ker"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Oc4-4F-b0x">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="r1q-mZ-ap3">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="r1q-mZ-ap3" firstAttribute="top" secondItem="THA-kt-deT" secondAttribute="bottom" id="3TL-Qu-GZo"/>
+                            <constraint firstItem="r1q-mZ-ap3" firstAttribute="leading" secondItem="Oc4-4F-b0x" secondAttribute="leading" id="Ocb-4z-hwk"/>
+                            <constraint firstAttribute="trailing" secondItem="r1q-mZ-ap3" secondAttribute="trailing" id="X8Q-pd-b2I"/>
+                            <constraint firstItem="YrT-hX-Ker" firstAttribute="top" secondItem="r1q-mZ-ap3" secondAttribute="bottom" id="gFN-Gj-zRg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="r1q-mZ-ap3" id="qe4-Ol-QY0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="41D-GT-eev" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1335" y="144"/>
         </scene>
     </scenes>
 </document>

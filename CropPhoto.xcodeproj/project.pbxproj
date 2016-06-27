@@ -20,6 +20,7 @@
 		46DDA86D1D2114E900E27AF2 /* CropPhotoView + Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DDA86C1D2114E900E27AF2 /* CropPhotoView + Gesture.swift */; };
 		46DDA86F1D2117F800E27AF2 /* CGRect + Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DDA86E1D2117F800E27AF2 /* CGRect + Center.swift */; };
 		46DDA8751D21231500E27AF2 /* CropPhoto + Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DDA8741D21231500E27AF2 /* CropPhoto + Save.swift */; };
+		46DDA8771D2128C700E27AF2 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DDA8761D2128C700E27AF2 /* ResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		46DDA86C1D2114E900E27AF2 /* CropPhotoView + Gesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CropPhotoView + Gesture.swift"; sourceTree = "<group>"; };
 		46DDA86E1D2117F800E27AF2 /* CGRect + Center.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect + Center.swift"; sourceTree = "<group>"; };
 		46DDA8741D21231500E27AF2 /* CropPhoto + Save.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CropPhoto + Save.swift"; sourceTree = "<group>"; };
+		46DDA8761D2128C700E27AF2 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				46BE85D71D147668005486D4 /* AppDelegate.swift */,
 				46BE85D91D147668005486D4 /* ViewController.swift */,
 				46BE85E71D147941005486D4 /* CropPhotoViewController.swift */,
+				46DDA8761D2128C700E27AF2 /* ResultViewController.swift */,
 				46C621361D20EEDE00D2254D /* Main.storyboard */,
 				46BE85DE1D147668005486D4 /* Assets.xcassets */,
 				46BE85E31D147668005486D4 /* Info.plist */,
@@ -261,6 +264,7 @@
 				46BE85E81D147941005486D4 /* CropPhotoViewController.swift in Sources */,
 				46BE85DA1D147668005486D4 /* ViewController.swift in Sources */,
 				46BE85D81D147668005486D4 /* AppDelegate.swift in Sources */,
+				46DDA8771D2128C700E27AF2 /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

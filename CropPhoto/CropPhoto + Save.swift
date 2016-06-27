@@ -10,7 +10,8 @@ import UIKit
 
 extension CropPhoto.View {
     
-    var imageViewRotation: CGFloat {
+    typealias Radians = CGFloat
+    var imageViewRotation: Radians {
         return imageView.transform.b
     }
     
@@ -26,7 +27,7 @@ extension CropPhoto.View {
         
         let croppingImageView = UIImageView(image: imageView.image)
         
-        croppingImageView.transform = CGAffineTransformRotate(CGAffineTransformIdentity, imageViewRotation * (CGFloat(M_PI) / 180))
+        croppingImageView.transform = CGAffineTransformRotate(CGAffineTransformIdentity, imageViewRotation)
         let rotatedRect = CGRectApplyAffineTransform(croppingImageView.bounds, croppingImageView.transform)
         
         let containerView = UIView(frame: CGRect(origin: .zero, size: rotatedRect.size))

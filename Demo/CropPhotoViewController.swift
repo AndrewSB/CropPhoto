@@ -18,27 +18,29 @@ extension CropPhotoViewController {
         let params = CropPhoto.Params(input!, cropRect: nil)
         
         cropPhotoView = CropPhoto.View(params: params, frame: self.view.frame)
-        view.addSubview(cropPhotoView!)
+        view.insertSubview(cropPhotoView!, atIndex: 0)
     }
     
     override func viewDidLayoutSubviews() {
         cropPhotoView?.frame = view.frame
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if
+            let des = segue.destinationViewController as? ResultViewController,
+            let image = sender as? UIImage {
+            des.result = image
+        }
+        
+    }
 }
 
 extension CropPhotoViewController {
     
-    
     @IBAction func didHitSave() {
         let croppedImage = cropPhotoView!.croppedImage()
-        
-        let displayVC = UIViewController()
-        let imageView = UIImageView(frame: displayVC.view.frame)
-        imageView.contentMode = .ScaleAspectFit
-        imageView.image = croppedImage
-        
-        presentViewController(displayVC, animated: true, completion: .None)
+
+        performSegueWithIdentifier("toDisplay", sender: croppedImage)
     }
     
 }
