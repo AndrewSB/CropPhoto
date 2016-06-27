@@ -13,19 +13,24 @@ public extension CropPhoto {
             
             return $0
         }(UIImageView())
+        var imageViewTransform: CGAffineTransform? = nil {
+            didSet {
+                self.imageView.transform = imageViewTransform!
+            }
+        }
 
         var maskRectView: UIView? = nil {
             didSet {
-//                removeMask()
-                print(maskRectView!.frame)
+                removeMask()
                 insertSubview(maskRectView!, aboveSubview: imageView)
             }
         }
         
         override init(frame: CGRect) {
             super.init(frame: frame)
-
+            
             addSubview(imageView)
+            addGestureRecognizers()
         }
         
         required public init?(coder aDecoder: NSCoder) {
@@ -40,12 +45,10 @@ public extension CropPhoto {
             bind(params)
         }
         
-        public override func layoutSubviews() {
-            super.layoutSubviews()
+        public override func didMoveToSuperview() {
+            super.didMoveToSuperview()
             
-            imageView.frame = self.frame
-            sendSubviewToBack(imageView)
-            print(maskRectView?.frame)
+            self.imageView.frame = self.frame
         }
     }
     

@@ -17,6 +17,8 @@
 		46C621301D20EE0900D2254D /* CropPhoto.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 46BE85C41D147615005486D4 /* CropPhoto.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		46C621381D20EEDE00D2254D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46C621361D20EEDE00D2254D /* Main.storyboard */; };
 		46DDA86B1D20F5D600E27AF2 /* CropPhotoView + Mask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DDA86A1D20F5D600E27AF2 /* CropPhotoView + Mask.swift */; };
+		46DDA86D1D2114E900E27AF2 /* CropPhotoView + Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DDA86C1D2114E900E27AF2 /* CropPhotoView + Gesture.swift */; };
+		46DDA86F1D2117F800E27AF2 /* CGRect + Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DDA86E1D2117F800E27AF2 /* CGRect + Center.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		46BE85E71D147941005486D4 /* CropPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropPhotoViewController.swift; sourceTree = "<group>"; };
 		46C621371D20EEDE00D2254D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		46DDA86A1D20F5D600E27AF2 /* CropPhotoView + Mask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CropPhotoView + Mask.swift"; sourceTree = "<group>"; };
+		46DDA86C1D2114E900E27AF2 /* CropPhotoView + Gesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CropPhotoView + Gesture.swift"; sourceTree = "<group>"; };
+		46DDA86E1D2117F800E27AF2 /* CGRect + Center.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect + Center.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,8 @@
 				46BE85CF1D14762C005486D4 /* CropPhoto.swift */,
 				46151D1F1D1481D90080B024 /* CropPhotoView.swift */,
 				46DDA86A1D20F5D600E27AF2 /* CropPhotoView + Mask.swift */,
+				46DDA86C1D2114E900E27AF2 /* CropPhotoView + Gesture.swift */,
+				46DDA86E1D2117F800E27AF2 /* CGRect + Center.swift */,
 			);
 			path = CropPhoto;
 			sourceTree = "<group>";
@@ -236,9 +242,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46DDA86F1D2117F800E27AF2 /* CGRect + Center.swift in Sources */,
 				46BE85D01D14762C005486D4 /* CropPhoto.swift in Sources */,
 				46151D201D1481D90080B024 /* CropPhotoView.swift in Sources */,
 				46DDA86B1D20F5D600E27AF2 /* CropPhotoView + Mask.swift in Sources */,
+				46DDA86D1D2114E900E27AF2 /* CropPhotoView + Gesture.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
