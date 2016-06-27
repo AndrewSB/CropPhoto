@@ -1,18 +1,13 @@
 import UIKit
+import CropPhoto
 
 class CropPhotoViewController: UIViewController {
     
-    var input: UIImage! 
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    @IBOutlet weak var cropPhotoView: CropPhotoView! {
+        didSet {
+            cropPhotoView.params = CropPhoto.Params(input: self.input!, cropRect: .zero)
+        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    var input: UIImage!
 
 }

@@ -6,7 +6,7 @@ public extension CropPhoto {
     
     public class View: UIView {
         
-        var params: Params! {
+        public var params: Params! {
             didSet { bind(params: params) }
         }
         
