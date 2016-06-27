@@ -26,7 +26,6 @@ public extension CropPhoto.View {
     }
     
     func bind(params: CropPhoto.Params) {
-        
         imageView.leftAnchor.constraintEqualToAnchor(self.leftAnchor)
         imageView.rightAnchor.constraintEqualToAnchor(self.rightAnchor)
         imageView.topAnchor.constraintEqualToAnchor(self.topAnchor)
