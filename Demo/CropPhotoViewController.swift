@@ -5,9 +5,18 @@ class CropPhotoViewController: UIViewController {
     
     @IBOutlet weak var cropPhotoView: CropPhotoView! {
         didSet {
-            cropPhotoView.params = CropPhoto.Params(input: self.input!, cropRect: .zero)
+            cropPhotoView.params = CropPhoto.Params(self.input!, cropRect: .zero)
         }
     }
     var input: UIImage!
 
+}
+
+extension CropPhotoViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+    
 }
