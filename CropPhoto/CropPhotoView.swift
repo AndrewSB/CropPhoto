@@ -7,11 +7,11 @@ public extension CropPhoto {
     public class View: UIView {
         
         public var params: Params! {
-            didSet { bind(params: params) }
+            didSet { bind(params) }
         }
         
         let imageView: UIImageView = {
-            $0.contentMode = .scaleAspectFit
+            $0.contentMode = .ScaleAspectFit
             
             return $0
         }(UIImageView())
@@ -29,10 +29,10 @@ public extension CropPhoto.View {
     
     func bind(params: CropPhoto.Params) {
         
-        imageView.leftAnchor.constraint(equalTo: self.leftAnchor)
-        imageView.rightAnchor.constraint(equalTo: self.rightAnchor)
-        imageView.topAnchor.constraint(equalTo: self.topAnchor)
-        imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        imageView.leftAnchor.constraintEqualToAnchor(self.leftAnchor)
+        imageView.rightAnchor.constraintEqualToAnchor(self.rightAnchor)
+        imageView.topAnchor.constraintEqualToAnchor(self.topAnchor)
+        imageView.bottomAnchor.constraintEqualToAnchor(self.bottomAnchor)
         
         imageView.image = params.input
         
