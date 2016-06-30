@@ -80,6 +80,7 @@ extension CropPhoto.View {
     
     func handlePinch(gesture: UIPinchGestureRecognizer) {
         defer { resetPinchScale() }
+        guard gesture.state != .Ended else { return }
         
         let scaleTransform = CGAffineTransformScale(self.imageView.transform, gesture.scale, gesture.scale)
 
@@ -91,10 +92,27 @@ extension CropPhoto.View {
     func handleRotate(gesture: UIRotationGestureRecognizer) {
         defer { resetRotateRotation() }
         
-        let rotationTransform = CGAffineTransformRotate(self.imageView.transform, gesture.rotation)
+        if gesture.state == .Began {
+            self.rotationCenter = self.touchCenter
+        }
+        if gesture.state == .Ended {
+            return
+        }
+        
+        let dX = self.rotationCenter.x - self.imageView.bounds.size.width / 2
+        let dY = self.rotationCenter.y - self.imageView.bounds.size.height / 2
+        
+        // this transform puts the image's rotation back to default. So up is up and down is down
+        var transform = CGAffineTransformTranslate(imageView.transform, dX, dY)
+        
+        // perform rotation
+        transform = CGAffineTransformRotate(transform, gesture.rotation)
+        
+        // this transform undos the default rotation translation
+        transform = CGAffineTransformTranslate(transform, -dX, -dY)
 
-        if maskContainsAnyOfTransformedImage(rotationTransform) {
-            self.imageView.transform = rotationTransform
+        if maskContainsAnyOfTransformedImage(transform) {
+            self.imageView.transform = transform
         }
     }
     
