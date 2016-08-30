@@ -201,6 +201,7 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = A29347X2JZ;
 						DevelopmentTeamName = "Andrew Breckenridge";
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 				};

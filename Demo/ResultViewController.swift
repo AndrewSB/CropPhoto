@@ -22,10 +22,8 @@ class ResultViewController: UIViewController {
 
 extension ResultViewController {
     
-    
-    @IBAction func doneButtonWasHit(sender: UIBarButtonItem) {
-        self.dismissViewControllerAnimated(true, completion: .None)
+    @IBAction func doneButtonWasHit(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: .none)
     }
-    
     
 }

@@ -13,41 +13,41 @@ class ViewController: UIViewController {
 extension ViewController {
     
     @IBAction func pickPhotoButtonWasHit() {
-        let cameraOrLibraryAlert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        let cameraOrLibraryAlert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        let cameraAction = UIAlertAction(title: "Camera", style: .Default) { _ in
-            self.imagePicker.sourceType = .Camera
-            self.presentViewController(self.imagePicker, animated: true, completion: .None)
+        let cameraAction = UIAlertAction(title: "Camera", style: .default) { _ in
+            self.imagePicker.sourceType = .camera
+            self.present(self.imagePicker, animated: true, completion: .none)
         }
-        let libraryAction = UIAlertAction(title: "Library", style: .Default) { _ in
-            self.imagePicker.sourceType = .PhotoLibrary
-            self.presentViewController(self.imagePicker, animated: true, completion: .None)
+        let libraryAction = UIAlertAction(title: "Library", style: .default) { _ in
+            self.imagePicker.sourceType = .photoLibrary
+            self.present(self.imagePicker, animated: true, completion: .none)
         }
         [cameraAction, libraryAction].forEach(cameraOrLibraryAlert.addAction)
         
-        presentViewController(cameraOrLibraryAlert, animated: true, completion: .None)
+        present(cameraOrLibraryAlert, animated: true, completion: .none)
     }
     
 }
 
 extension ViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        dismissViewControllerAnimated(true, completion: {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        dismiss(animated: true, completion: {
             if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-                self.performSegueWithIdentifier("toCrop", sender: pickedImage)
+                self.performSegue(withIdentifier: "toCrop", sender: pickedImage)
             } else {
-                let ohNoAlert = UIAlertController(title: "Oh no!", message: "We couldn't retrieve your selected photo 🤔", preferredStyle: .Alert)
-                ohNoAlert.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: .None))
-                self.presentViewController(ohNoAlert, animated: true, completion: .None)
+                let ohNoAlert = UIAlertController(title: "Oh no!", message: "We couldn't retrieve your selected photo 🤔", preferredStyle: .alert)
+                ohNoAlert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: .none))
+                self.present(ohNoAlert, animated: true, completion: .none)
             }
         })
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if
             segue.identifier == "toCrop",
-            let des = segue.destinationViewController as? CropPhotoViewController,
+            let des = segue.destination as? CropPhotoViewController,
             let image = sender as? UIImage {
             des.input = image
         }
