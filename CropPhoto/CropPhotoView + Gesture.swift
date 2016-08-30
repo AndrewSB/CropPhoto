@@ -11,7 +11,7 @@ extension CropPhoto.View {
     }
     
     func resetPanCenter() {
-        ImageOperationGestureRecognizers.Pan.setTranslation(.zero, inView: imageView)
+        ImageOperationGestureRecognizers.Pan.setTranslation(.zero, in: imageView)
     }
     
     func resetPinchScale() {
@@ -26,32 +26,32 @@ extension CropPhoto.View {
 
 extension CropPhoto.View {
     
-    func handleTouches(touches: Set<UITouch>?) {
-        guard let touches = touches where touches.count > 2 else {
+    func handleTouches(_ touches: Set<UITouch>?) {
+        guard let touches = touches , touches.count > 2 else {
             self.touchCenter = .zero
             return
         }
         
         touches.forEach { touch in
-            let touchLocation = touch.locationInView(self.imageView)
+            let touchLocation = touch.location(in: self.imageView)
             self.touchCenter = CGPoint(x: touchCenter.x + touchLocation.x, y: touchCenter.y + touchLocation.y)
         }
     }
     
-    override public func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        self.handleTouches(event?.allTouches())
+    override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.handleTouches(event?.allTouches)
     }
     
-    override public func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        self.handleTouches(event?.allTouches())
+    override public func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.handleTouches(event?.allTouches)
     }
     
-    override public func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?)  {
-        self.handleTouches(event?.allTouches())
+    override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)  {
+        self.handleTouches(event?.allTouches)
     }
 
-    override public func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
-        self.handleTouches(event?.allTouches())
+    override public func touchesCancelled(_ touches: Set<UITouch>?, with event: UIEvent?) {
+        self.handleTouches(event?.allTouches)
     }
 
 }
@@ -67,35 +67,35 @@ extension CropPhoto.View {
         ImageOperationGestureRecognizers.Rotate.addTarget(self, action: #selector(handleRotate(_:)))
     }
     
-    func handlePan(gesture: UIPanGestureRecognizer) {
+    func handlePan(_ gesture: UIPanGestureRecognizer) {
         defer { resetPanCenter() }
         
-        let translation = gesture.translationInView(self)
-        let panTransformation = CGAffineTransformTranslate(imageView.transform, translation.x, translation.y)
+        let translation = gesture.translation(in: self)
+        let panTransformation = imageView.transform.translatedBy(x: translation.x, y: translation.y)
         
         if maskContainsAnyOfTransformedImage(panTransformation) {
             self.imageView.transform = panTransformation
         }
     }
     
-    func handlePinch(gesture: UIPinchGestureRecognizer) {
+    func handlePinch(_ gesture: UIPinchGestureRecognizer) {
         defer { resetPinchScale() }
-        guard gesture.state != .Ended else { return }
+        guard gesture.state != .ended else { return }
         
-        let scaleTransform = CGAffineTransformScale(self.imageView.transform, gesture.scale, gesture.scale)
+        let scaleTransform = self.imageView.transform.scaledBy(x: gesture.scale, y: gesture.scale)
 
         if maskContainsAnyOfTransformedImage(scaleTransform) {
             self.imageView.transform = scaleTransform
         }
     }
     
-    func handleRotate(gesture: UIRotationGestureRecognizer) {
+    func handleRotate(_ gesture: UIRotationGestureRecognizer) {
         defer { resetRotateRotation() }
         
-        if gesture.state == .Began {
+        if gesture.state == .began {
             self.rotationCenter = self.touchCenter
         }
-        if gesture.state == .Ended {
+        if gesture.state == .ended {
             return
         }
         
@@ -103,13 +103,13 @@ extension CropPhoto.View {
         let dY = self.rotationCenter.y - self.imageView.bounds.size.height / 2
         
         // this transform puts the image's rotation back to default. So up is up and down is down
-        var transform = CGAffineTransformTranslate(imageView.transform, dX, dY)
+        var transform = imageView.transform.translatedBy(x: dX, y: dY)
         
         // perform rotation
-        transform = CGAffineTransformRotate(transform, gesture.rotation)
+        transform = transform.rotated(by: gesture.rotation)
         
         // this transform undos the default rotation translation
-        transform = CGAffineTransformTranslate(transform, -dX, -dY)
+        transform = transform.translatedBy(x: -dX, y: -dY)
 
         if maskContainsAnyOfTransformedImage(transform) {
             self.imageView.transform = transform
@@ -120,18 +120,18 @@ extension CropPhoto.View {
 
 private extension CropPhoto.View {
     
-    private func maskContainsAnyOfTheImage(translatedCenter: CGPoint) -> Bool {
+    func maskContainsAnyOfTheImage(_ translatedCenter: CGPoint) -> Bool {
         var imageViewFrame = self.imageView.frame
         imageViewFrame.center = translatedCenter
         
-        return CGRectIntersectsRect(imageViewFrame, params.cropRect ?? defaultCropRect)
+        return imageViewFrame.intersects(params.cropRect ?? defaultCropRect)
     }
     
-    private func maskContainsAnyOfTransformedImage(transformation: CGAffineTransform) -> Bool {
+    func maskContainsAnyOfTransformedImage(_ transformation: CGAffineTransform) -> Bool {
         let oldTransform = self.imageView.transform
         self.imageView.transform = transformation
 
-        let contains = CGRectIntersectsRect(params.cropRect ?? defaultCropRect, imageView.frame)
+        let contains = (params.cropRect ?? defaultCropRect).intersects(imageView.frame)
         
         imageView.transform = oldTransform
         return contains
@@ -140,7 +140,7 @@ private extension CropPhoto.View {
 }
 
 extension CropPhoto.View: UIGestureRecognizerDelegate {
-    public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
 }

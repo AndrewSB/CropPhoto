@@ -4,12 +4,12 @@ public extension CropPhoto {
     
     public class View: UIView {
         
-        public var params: Params! {
+        open var params: Params! {
             didSet { bind(params) }
         }
         
         let imageView: UIImageView = {
-            $0.contentMode = .ScaleAspectFit
+            $0.contentMode = .scaleAspectFit
             
             return $0
         }(UIImageView())
@@ -21,7 +21,7 @@ public extension CropPhoto {
             }
         }
         
-        // a sink for touches
+        /// a sink for touches
         var touchCenter: CGPoint!
         var rotationCenter: CGPoint!
         
@@ -49,7 +49,7 @@ public extension CropPhoto {
 public extension CropPhoto.View {
     
     public func croppedImage() -> UIImage {
-        return self.croppedTransformedImage(self.imageView, cropRect: params.cropRect ?? defaultCropRect)
+        return self.croppedTransformedImage(sourceImageView: self.imageView, cropRect: params.cropRect ?? defaultCropRect)
     }
     
 }
@@ -63,7 +63,7 @@ extension CropPhoto.View {
     }
     
     
-    func bind(params: CropPhoto.Params) {
+    func bind(_ params: CropPhoto.Params) {
         imageView.image = params.image
         maskRectView = maskView(withTransparentRect: params.cropRect)
     }

@@ -28,19 +28,19 @@ extension CropPhoto.View {
                                       cornerRadius: CGFloat = 10)-> UIView {
         
         let coloredLargeView = MaskView(frame: self.frame)
-        coloredLargeView.backgroundColor = .clearColor()
-        coloredLargeView.userInteractionEnabled = false
+        coloredLargeView.backgroundColor = .clear
+        coloredLargeView.isUserInteractionEnabled = false
         
         let coloredPath = UIBezierPath(rect: CGRect(origin: .zero, size: CGSize(width: self.frame.width, height: self.frame.height + 40)))
         let transparentPath = UIBezierPath(roundedRect: rect ?? defaultCropRect, cornerRadius: cornerRadius)
 
-        coloredPath.appendPath(transparentPath)
+        coloredPath.append(transparentPath)
         coloredPath.usesEvenOddFillRule = true
 
         let fillLayer = CAShapeLayer()
-        fillLayer.path = coloredPath.CGPath
+        fillLayer.path = coloredPath.cgPath
         fillLayer.fillRule = kCAFillRuleEvenOdd
-        fillLayer.fillColor = backgroundColor.CGColor
+        fillLayer.fillColor = backgroundColor.cgColor
         
         coloredLargeView.layer.addSublayer(fillLayer)
         return coloredLargeView
