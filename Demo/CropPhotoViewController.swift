@@ -41,6 +41,6 @@ extension CropPhotoViewController {
         let croppedImage = cropPhotoView!.croppedImage()
 
         performSegue(withIdentifier: "toDisplay", sender: croppedImage)
-    }
+    }    
     
 }
