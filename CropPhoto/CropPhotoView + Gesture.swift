@@ -38,19 +38,19 @@ extension CropPhoto.View {
         }
     }
     
-    override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.handleTouches(event?.allTouches)
     }
     
-    override public func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override open func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.handleTouches(event?.allTouches)
     }
     
-    override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)  {
+    override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)  {
         self.handleTouches(event?.allTouches)
     }
 
-    override public func touchesCancelled(_ touches: Set<UITouch>?, with event: UIEvent?) {
+    override open func touchesCancelled(_ touches: Set<UITouch>?, with event: UIEvent?) {
         self.handleTouches(event?.allTouches)
     }
 

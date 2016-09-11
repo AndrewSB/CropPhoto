@@ -48,10 +48,13 @@
                         <viewControllerLayoutGuide type="top" id="UpN-bc-nP8"/>
                         <viewControllerLayoutGuide type="bottom" id="SE7-Dq-EtY"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="aQa-as-iLE">
+                    <view key="view" contentMode="scaleToFill" id="aQa-as-iLE" customClass="BruhPhotoView" customModule="CropPhoto">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gpa-rZ-Lfi">
+                                <color key="backgroundColor" red="0.1213233843" green="0.67502456899999996" blue="0.71426230670000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="44" translatesAutoresizingMaskIntoConstraints="NO" id="eE1-5R-1SU">
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Bo-8u-Gzz">
@@ -75,11 +78,16 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="gpa-rZ-Lfi" firstAttribute="leading" secondItem="aQa-as-iLE" secondAttribute="leading" id="2zk-ZC-a4X"/>
                             <constraint firstItem="SE7-Dq-EtY" firstAttribute="top" secondItem="eE1-5R-1SU" secondAttribute="bottom" constant="22" id="4Lu-yi-Kif"/>
+                            <constraint firstItem="SE7-Dq-EtY" firstAttribute="top" secondItem="gpa-rZ-Lfi" secondAttribute="bottom" id="GWH-1w-tqK"/>
+                            <constraint firstItem="gpa-rZ-Lfi" firstAttribute="top" secondItem="UpN-bc-nP8" secondAttribute="bottom" id="V0d-a9-QmL"/>
+                            <constraint firstAttribute="trailing" secondItem="gpa-rZ-Lfi" secondAttribute="trailing" id="bD3-2X-TkM"/>
                             <constraint firstItem="eE1-5R-1SU" firstAttribute="centerX" secondItem="aQa-as-iLE" secondAttribute="centerX" id="dAx-x2-k9j"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cropPhotoView" destination="gpa-rZ-Lfi" id="PlI-KP-sXX"/>
                         <segue destination="Aa8-v7-wDE" kind="show" identifier="toDisplay" id="yKv-GO-IgR"/>
                     </connections>
                 </viewController>

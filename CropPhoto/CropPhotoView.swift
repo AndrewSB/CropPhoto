@@ -1,49 +1,14 @@
 import UIKit
 
-public extension CropPhoto {
+public extension CropPhoto.View {
     
-    public class View: UIView {
+    convenience public init(params: CropPhoto.Params, frame: CGRect) {
+        self.init(frame: frame)
         
-        open var params: Params! {
-            didSet { bind(params) }
-        }
-        
-        let imageView: UIImageView = {
-            $0.contentMode = .scaleAspectFit
-            
-            return $0
-        }(UIImageView())
-
-        var maskRectView: UIView? = nil {
-            didSet {
-                removeMask()
-                insertSubview(maskRectView!, aboveSubview: imageView)
-            }
-        }
-        
-        /// a sink for touches
-        var touchCenter: CGPoint!
-        var rotationCenter: CGPoint!
-        
-        override init(frame: CGRect) {
-            super.init(frame: frame)
-            
-            addSubview(imageView)
-            addGestureRecognizers()
-        }
-        
-        required public init?(coder aDecoder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
-        }
-        
-        convenience public init(params: CropPhoto.Params, frame: CGRect) {
-            self.init(frame: frame)
-            
-            self.params = params
-            bind(params)
-        }
-        
+        self.params = params
+        bind(params: params)
     }
+    
 }
 
 public extension CropPhoto.View {
@@ -56,16 +21,16 @@ public extension CropPhoto.View {
 
 extension CropPhoto.View {
     
-    public override func didMoveToSuperview() {
+    open override func didMoveToSuperview() {
         super.didMoveToSuperview()
         
         self.imageView.frame = self.frame
     }
     
     
-    func bind(_ params: CropPhoto.Params) {
+    func bind(params: CropPhoto.Params) {
         imageView.image = params.image
-        maskRectView = maskView(withTransparentRect: params.cropRect)
+        maskRectView = buildMaskView(withTransparentRect: params.cropRect)
     }
     
 }

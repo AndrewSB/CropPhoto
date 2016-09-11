@@ -23,7 +23,7 @@ extension CropPhoto.View {
         )
     }
     
-    func maskView(withTransparentRect rect: CGRect? = nil,
+    func buildMaskView(withTransparentRect rect: CGRect? = nil,
                                       backgroundColor: UIColor = UIColor(white:  0.173, alpha: 0.94),
                                       cornerRadius: CGFloat = 10)-> UIView {
         

@@ -1,10 +1,12 @@
 import UIKit
 import CropPhoto
 
+class ImportedCropPhotoView: CropPhoto.View {}
+
 class CropPhotoViewController: UIViewController {
     
-    var cropPhotoView: CropPhoto.View?
-    
+    @IBOutlet weak var cropPhotoView: CropPhoto.View!
+
     var input: UIImage!
 
 }
@@ -15,14 +17,7 @@ extension CropPhotoViewController {
         super.viewDidLoad()
         
         assert(input != nil, "You didn't set the input, fam")
-        let params = CropPhoto.Params(image: input, cropRect: nil)
-        
-        cropPhotoView = CropPhoto.View(params: params, frame: self.view.frame)
-        view.insertSubview(cropPhotoView!, at: 0)
-    }
-    
-    override func viewDidLayoutSubviews() {
-        cropPhotoView?.frame = view.frame
+//        cropPhotoView.params = CropPhoto.Params(image: input, cropRect: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -41,6 +36,6 @@ extension CropPhotoViewController {
         let croppedImage = cropPhotoView!.croppedImage()
 
         performSegue(withIdentifier: "toDisplay", sender: croppedImage)
-    }    
+    }
     
 }
