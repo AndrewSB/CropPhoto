@@ -2,6 +2,12 @@ import UIKit
 
 public extension CropPhoto.View {
     
+    override open var frame: CGRect {
+        didSet {
+            self.imageView.frame = frame
+        }
+    }
+    
     convenience public init(params: CropPhoto.Params, frame: CGRect) {
         self.init(frame: frame)
         
@@ -20,13 +26,6 @@ public extension CropPhoto.View {
 }
 
 extension CropPhoto.View {
-    
-    open override func didMoveToSuperview() {
-        super.didMoveToSuperview()
-        
-        self.imageView.frame = self.frame
-    }
-    
     
     func bind(params: CropPhoto.Params) {
         imageView.image = params.image

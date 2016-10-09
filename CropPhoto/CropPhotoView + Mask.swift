@@ -11,9 +11,9 @@ extension CropPhoto.View {
     
 }
 
-extension CropPhoto.View {
+public extension CropPhoto.View {
     
-    var defaultCropRect: CGRect {
+    public var defaultCropRect: CGRect {
         let fractionalWidth = self.frame.size.width * 0.85
         let fractionalHeight = fractionalWidth * 0.65
         
